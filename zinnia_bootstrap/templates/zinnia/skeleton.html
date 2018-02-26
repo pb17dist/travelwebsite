@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static i18n zinnia %}
+
+{% block content_base %}
+<div class="row">
+  <div id="content" class="hfeed col-xs-12 col-sm-8 col-md-8 col-lg-8">
+    <div hidden="true">{% block breadcrumbs %}{% endblock breadcrumbs %}</div>
+    {% block content %}
+    <div class="links">
+      <h3>{% trans "Useful links" %}</h3>
+      <ul>
+        <li>
+          <a href="{% url 'zinnia:entry_archive_index' %}" title="{% trans "Weblog index" %}">
+            {% trans "Weblog index" %}
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'zinnia:sitemap' %}" title="{% trans "Sitemap" %}">
+            {% trans "Sitemap" %}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="search">
+      <h3>{% trans "Search" %}</h3>
+      {% include "zinnia/tags/search_form.html" %}
+    </div>
+    {% endblock content %}
+  </div>
+  <div id="sidebar" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    {% block sidebar %}
+    {% endblock sidebar %}
+  </div>
+</div>
+{% endblock content_base %}
