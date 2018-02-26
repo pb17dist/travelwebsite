@@ -1,0 +1,83 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+
+/* The fixed navbar will overlay your other content,
+unless you add padding to the top of the <body>.
+Try out your own values or use our snippet below. Tip: By default, the navbar is 50px high. */
+body { padding-top: 70px; }
+
+/* NAVIGATOR
+-------------------------------------------------- */
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.navbar-brand>img {
+  width: 5rem;
+  height: 5rem;
+  margin-right: 10px;
+  padding: 0;
+}
+
+/* These styles are generated from project.scss. */
+
+.alert-debug {
+  color: black;
+  background-color: white;
+  border-color: #d6e9c6;
+}
+
+.alert-error {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+
+/* Display django-debug-toolbar.
+   See https://github.com/django-debug-toolbar/django-debug-toolbar/issues/742
+   and https://github.com/pydanny/cookiecutter-django/issues/317
+*/
+[hidden][style="display: block;"] {
+  display: block !important;
+}
+
+/* ZINNIA CALENDAR
+-------------------------------------------------- */
+.zinnia [class*='entries-calendar'] {
+  table-layout: fixed;
+  width: 100%; }
+  .zinnia [class*='entries-calendar'] caption, .zinnia [class*='entries-calendar'] td, .zinnia [class*='entries-calendar'] th {
+    /* padding: 4px 0; */
+    text-align: center; }
+  .zinnia [class*='entries-calendar'] caption {
+    font-weight: bold;
+    text-transform: uppercase; }
+  .zinnia [class*='entries-calendar'] tfoot td {
+    font-style: normal;
+    text-transform: capitalize; }
+  .zinnia [class*='entries-calendar'] .entry {
+    font-weight: bold;
+    font-size: 1.2em; }
+
+/* ZINNIA TAG CLOUD
+-------------------------------------------------- */
+.zinnia .tag-cloud {
+  /* padding: 0;
+  font-size: 1.4em;
+line-height: 1.68em; */ }
+  .zinnia .tag-cloud li {
+    list-style: none;
+    display: inline; }
+  .zinnia .tag-cloud .tag-1 {
+    font-size: 0.7em; }
+  .zinnia .tag-cloud .tag-2 {
+    font-size: 0.9em; }
+  .zinnia .tag-cloud .tag-3 {
+    font-size: 1.0em; }
+  .zinnia .tag-cloud .tag-4 {
+    font-size: 1.2em; }
+  .zinnia .tag-cloud .tag-5 {
+    font-size: 1.6em; }
+  .zinnia .tag-cloud .tag-6 {
+    font-size: 2.0em; }

@@ -67,6 +67,9 @@ LOCAL_APPS = [
     'tagging',
     'zinnia_bootstrap',
     'zinnia',
+
+    # Leaflet
+    #'leaflet',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
