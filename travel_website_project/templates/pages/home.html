@@ -1,1 +1,173 @@
 {% extends "base.html" %}
+{% load static i18n %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static "css/home.css" %}" />
+{% endblock css %}
+
+{% block content %}
+
+<div class="container" style="padding-bottom: 30px;">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="{{ MEDIA_URL }}home/teatro_colon.png" alt="Teatro Colon" style="width:1140px;height:300px;"> <!-- width:100%;height:300px; -->
+        <div class="carousel-caption">
+          <div align="left">
+            <h1>Cities Life in Argenia & Chile</h1>
+            <p>Evita in Buenos Aires, 2.5 GBP ticket in top-tier opera house, locals dancing tango<br>
+               Christmas in Montevideo, mate always, fireworks at Christmas, sunset gazing with family and mate<br>
+               Santiago party district, museum<br>
+               Valpaiso murales
+             </p>
+            <p><a class="btn btn-lg btn-primary" href="http://www.teatrocolon.org.ar/" target="_blank" role="button">View details &raquo;</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="{{ MEDIA_URL }}home/fitz_roy.png" alt="Mount Fitz Roy" style="width:1140px;height:300px;"> <!-- width:100%;height:300px; -->
+        <div class="carousel-caption" align="right">
+          <div align="right">
+            <h1>Patagonia</h1>
+            <p>Into the wild.<br>
+               Ushuaia. Pinguins, sea Lions. Fin del mundo. World travellers.<br>
+               Glacier Perito Moreno, Gauchios<br>
+               El Chalten, Fitz Roy, Cerro Torre<br>
+               Torres del Paine<br>
+               Bariloche, Chioe, Cochamo, El Junta
+             </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="{{ MEDIA_URL }}home/pisco_elqui.png" alt="Pisco Elqui" style="width:1140px;height:300px;"> <!-- width:100%;height:300px; -->
+        <div class="carousel-caption" align="center">
+          <div align="center">
+            <h1>Atacama Desert</h1>
+            <p>La Serena<br>
+              Elqui valley, stargazing, vineyards, Pisco Elqui<br>
+              Bahia Inglese, desert all around until the sea
+            </p>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">Learn More!</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>To make it more user friendly there is the idea of EventRelation which links generic objects and an Event object.  The idea is that you will keep more information about the event in these relations such as who is authorized to view them. It could be the case that User is linked to Event to represent who is authorized to view the event, and also User is linked to event to represent who is attending the event.</p>
+                      <p>The EventRelation has another field called distinction.  So in the previous example we could add an EventRelation which links a User to an Event with the distinction "viewer" and another EventRelation which links a User to an Event with the distinction "attendee."</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+    <div class="col-lg-4">
+      <img class="marketing-rounded-circle" src="{{ MEDIA_URL }}home/globe.jpg" alt="Globe">
+      <h2>Where're you heading?</h2>
+      <p>See the places we have visited and what is still to come using an interactive map and a list.</p>
+      <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <img class="marketing-rounded-circle" src="{{ MEDIA_URL }}home/Ceci_prepare.png" alt="Preparation">
+      <h2>Inspiration</h2>
+      <p>Why? How? Take a look at how we got here.</p>
+      <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <img class="marketing-rounded-circle" src="{{ MEDIA_URL }}home/Ceci_backpack.png" alt="Backpack">
+      <h2>What's in the bag?</h2>
+      <p>Take a peek inside the bag and see what we bring with us.</p>
+      <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
+
+  <!-- START THE FEATURETTES -->
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-5">
+      <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7 order-md-2">
+      <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-5 order-md-1">
+      <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-5">
+      <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+  <!-- /END THE FEATURETTES -->
+
+</div><!-- /.container -->
+
+{% endblock content %}
+
+{% block javascript %}
+<script src="{% static "base/imsky-holder-8220898/holder.js" %}"></script>
+{% endblock javascript %}

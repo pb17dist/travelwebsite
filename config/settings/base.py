@@ -7,6 +7,7 @@ https://docs.djangoproject.com/en/dev/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
+import os
 import environ
 
 ROOT_DIR = environ.Path(__file__) - 3  # (travel_website_project/config/settings/base.py - 3 = travel_website_project/)
@@ -40,8 +41,6 @@ DJANGO_APPS = [
 
     # Useful template tags:
     # 'django.contrib.humanize',
-
-    # Admin
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
@@ -56,6 +55,18 @@ LOCAL_APPS = [
     # custom users app
     'travel_website_project.users.apps.UsersConfig',
     # Your stuff: custom apps go here
+
+    # boto3 AWS S3 access
+    # docs: https://www.codingforentrepreneurs.com/blog/s3-static-media-files-for-django/
+    'storages',
+
+    # Zinnia weblog
+    # docs: http://docs.django-blog-zinnia.com/en/develop/getting-started/install.html
+    'django_comments',
+    'mptt',
+    'tagging',
+    'zinnia_bootstrap',
+    'zinnia',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -127,6 +138,37 @@ TIME_ZONE = 'Europe/London'
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = 'en-us'
 
+gettext = lambda s: s  # noqa
+
+LANGUAGES = (
+    ('en', gettext('English')),
+    ('fr', gettext('French')),
+    ('de', gettext('German')),
+    ('es', gettext('Spanish')),
+    ('it', gettext('Italian')),
+    ('nl', gettext('Dutch')),
+    ('sl', gettext('Slovenian')),
+    ('bg', gettext('Bulgarian')),
+    ('hu', gettext('Hungarian')),
+    ('cs', gettext('Czech')),
+    ('sk', gettext('Slovak')),
+    ('lt', gettext('Lithuanian')),
+    ('ru', gettext('Russian')),
+    ('pl', gettext('Polish')),
+    ('eu', gettext('Basque')),
+    ('he', gettext('Hebrew')),
+    ('ca', gettext('Catalan')),
+    ('tr', gettext('Turkish')),
+    ('sv', gettext('Swedish')),
+    ('is', gettext('Icelandic')),
+    ('hr_HR', gettext('Croatian')),
+    ('pt_BR', gettext('Brazilian Portuguese')),
+    ('fa_IR', gettext('Persian')),
+    ('fi_FI', gettext('Finnish')),
+    ('uk_UA', gettext('Ukrainian')),
+    ('zh-hans', gettext('Simplified Chinese')),
+)
+
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
 
@@ -150,15 +192,16 @@ TEMPLATES = [
         'DIRS': [
             str(APPS_DIR.path('templates')),
         ],
+        'APP_DIRS': True, # SystemCheckError: System check identified some issues: ERRORS: ?: (templates.E001) You have 'APP_DIRS': True in your TEMPLATES but also specify 'loaders' in OPTIONS. Either remove APP_DIRS or remove the 'loaders' option.
         'OPTIONS': {
             # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
             'debug': DEBUG,
             # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
             # https://docs.djangoproject.com/en/dev/ref/templates/api/#loader-types
-            'loaders': [
-                'django.template.loaders.filesystem.Loader',
-                'django.template.loaders.app_directories.Loader',
-            ],
+            #'w': [
+            #    'django.template.loaders.filesystem.Loader',
+            #    'django.template.loaders.app_directories.Loader',
+            #],
             # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -170,13 +213,15 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.messages.context_processors.messages',
                 # Your stuff: custom template context processors go here
+                'zinnia.context_processors.version',  # Optional
+
             ],
         },
     },
 ]
 
 # See: http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # STATIC FILE CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -189,6 +234,7 @@ STATIC_URL = '/static/'
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
 STATICFILES_DIRS = [
     str(APPS_DIR.path('static')),
+    str(ROOT_DIR.path('static')),
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
@@ -200,7 +246,7 @@ STATICFILES_FINDERS = [
 # MEDIA CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR('media'))
+MEDIA_ROOT = 'media'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = '/media/'

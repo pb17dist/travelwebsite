@@ -8,6 +8,9 @@ from django.views import defaults as default_views
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name='about'),
+    #url(r'^blog/$', TemplateView.as_view(template_name='pages/blog.html'), name='blog'),
+    url(r'^destinations/$', TemplateView.as_view(template_name='pages/destinations.html'), name='destinations'),
+    url(r'^travels/$', TemplateView.as_view(template_name='pages/travels.html'), name='travels'),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, admin.site.urls),
@@ -17,7 +20,8 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
-
+    url(r'^weblog/', include('zinnia.urls')),
+    url(r'^comments/', include('django_comments.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
